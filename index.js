@@ -2,10 +2,12 @@ import express from 'express';
 import { MongoClient } from 'mongodb';
 import dotenv from 'dotenv';
 import {ObjectId} from 'bson';
+import cors from 'cors';
 
 dotenv.config()
 
 const app=express();
+app.use(cors())
 app.use(express.json())
 
 const PORT=process.env.PORT;
