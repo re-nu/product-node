@@ -48,14 +48,14 @@ app.get("/products",async(request,response)=>{
     response.send(products);
 })
 
-app.get("/product:_id",async(request,response)=>{
+app.get("/product/:_id",async(request,response)=>{
     const {_id}=request.params
     console.log(_id)
     const product = await getProductById(_id)
     response.send(product)
 })
 
-app.put("/product:_id",async(request,response)=>{
+app.put("/product/:_id",async(request,response)=>{
     const{_id}=request.params
     const product=request.body
     const result=await editProduct(_id, product)
@@ -63,7 +63,7 @@ app.put("/product:_id",async(request,response)=>{
     response.send(UpdatedProduct);
 })
 
-app.delete("/product:_id",async(request,response)=>{
+app.delete("/product/:_id",async(request,response)=>{
     const {_id}=request.params
     const result=await client.db("b28wd").collection("products").deleteOne({_id:ObjectId(_id)})
     response.send(result);
